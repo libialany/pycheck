@@ -24,6 +24,3 @@ def isCurrent(currentVersion, repo):
         return True # Up to date
     else:
         return False # Out of date
-    
-
-isCurrent("x", "ottomated/CrewLink")
