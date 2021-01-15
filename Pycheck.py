@@ -9,7 +9,7 @@ def isCurrent(currentVersion, repo):
 
     # Is valid repo
     if data[0] == '{"message":"Not Found"': # Invalid
-        raise Exception("Invalid repository given")
+        raise Exception("Invalid repository")
 
     # Get latest version
     latestVersion = None
