@@ -1,11 +1,12 @@
 from bs4 import BeautifulSoup
 from requests import get
 from win10toast import ToastNotifier
+import threading
 
-def __notify(dur, msg, title):
+def notifyC(title, msg, dur):
     ToastNotifier().show_toast(title, msg, duration=dur)
 
-def isCurrent(currentVersion:str, repo:str, notifyCheck:bool = False, notifyDuration:int = 5):
+def isCurrent(currentVersion:str, repo:str, notify:bool = False, notifyDuration:int = 5):
 
     repo = "https://api.github.com/repos/"+ str(repo) + "/releases/latest" # create link adress
     request = get(repo) # Get web data
@@ -27,7 +28,7 @@ def isCurrent(currentVersion:str, repo:str, notifyCheck:bool = False, notifyDura
     elif latestVersion == currentVersion: 
         return True # Up to date
     else:
-        if notifyCheck:
-            __notfiy("Update available", "")
+        if notify:
+            threading.Thread(target=notifyC, args=("Update Available", "You are on: " + currentVersion + "| Version Available: " + latestVersion, notifyDuration)).start()
         return False # Out of date
         
