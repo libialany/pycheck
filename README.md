@@ -35,7 +35,7 @@ print(pycheck.isCurrent(version, repo))
 ```
 
 <br/>
-If the user is on windows we can also send a notification.
+If the user is on windows or macOS we can also send a notification.
 
 ```py
 notify = True # Show notification, default is False
