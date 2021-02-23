@@ -3,11 +3,10 @@ from requests import get
 from win10toast import ToastNotifier
 import threading
 
-def notifyC(title, msg, dur):
-    ToastNotifier().show_toast(title, msg, duration=dur)
-
 def isCurrent(currentVersion:str, repo:str, notify:bool = False, notifyDuration:int = 5):
-
+    def notifyC(title, msg, dur):
+        ToastNotifier().show_toast(title, msg, duration=dur)
+        
     repo = "https://api.github.com/repos/"+ str(repo) + "/releases/latest" # create link adress
     request = get(repo) # Get web data
     data = str(BeautifulSoup(request.text, "html.parser")).split(",") # Get data from github
