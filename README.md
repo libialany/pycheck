@@ -13,7 +13,7 @@ This module allows you to check if the most recent release from a github repo is
 - [Changelog](#changelog)
 
 ## Installation
-Currently this module is not available through pypi so you must clone the repo and drag the Pycheck.py file into your project directory.
+Currently this module is not available through pypi so you must clone the repo and drag the Pycheck.py file into your project directory. You will also require the beautifulsoup4, win10toast and platform modules.
 
 ## Usage
 To use this module we first need to import the module into our python project.
