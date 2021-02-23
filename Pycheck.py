@@ -37,4 +37,18 @@ def isCurrent(currentVersion:str, repo:str, notify:bool = False, notifyDuration:
         if notify:
             threading.Thread(target=notifyC, args=("Update Available", "You are on: " + currentVersion + "| Version Available: " + latestVersion, notifyDuration, latestVersion)).start()
         return False # Out of date
-        
+
+def getCurrentVersion(repo:str):
+    repo = "https://api.github.com/repos/"+ str(repo) + "/releases/latest" # create link adress
+    request = get(repo) # Get web data
+    data = str(BeautifulSoup(request.text, "html.parser")).split(",") # Get data from github
+
+    # Is valid repo
+    if data[0] == '{"message":"Not Found"': # Invalid
+        raise Exception("Invalid repository")
+
+    # Get latest version
+    for x in data:
+        if x.split('"')[1] == "name": # if name of latest update
+            return x.split('"')[4] # latestVersion = update name
+
