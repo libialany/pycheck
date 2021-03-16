@@ -35,17 +35,31 @@ print(pycheck.isCurrent(version, repo))
 ```
 
 <br/>
-If the user is on windows or macOS we can also send a notification.
+We can also get the name of the latest release.
 
 ```py
-notify = True # Show notification, default is False
-notifyDuration = 5 # The amount of seconds the notification will show for. default is 3
 
-print(pycheck.isCurrent(version, repo, notify, notifyDuration))
-# Will return False as a bool and show a desktop notification.
+print(pycheck.getCurrentRelease(repo))
+# Will return "0.2.0" as a string.
+```
+
+<br/>
+We can also get the age of the release. That being the number of new releases since the local version was released.
+
+```py
+
+print(pycheck.getReleaseAge(version, repo))
+# Will return 3" as an integer.
 ```
 
 ## Changelog
+### V0.3.0
+- Removed ability to send notifications
+- Optimised Process
+- Renamed functions
+- You can now get the release age
+
+
 ### V0.2.0
 - Added macOS support for notifications
 - Added new function to get current version
