@@ -1,8 +1,6 @@
 # Update-Checker
 
-<p align-center>
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Version: 0.3.0](https://img.shields.io/badge/Version-V0.3.0-blue)
-</p>
 
 ## Description
 
