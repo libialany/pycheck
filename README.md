@@ -1,6 +1,8 @@
 # Update-Checker
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Version: 0.2.0](https://img.shields.io/badge/Version-V0.2.0-blue)
+<p align-center>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Version: 0.3.0](https://img.shields.io/badge/Version-V0.3.0-blue)
+</p>
 
 ## Description
 
@@ -67,3 +69,6 @@ print(pycheck.getReleaseAge(version, repo))
 ### V0.1.0
 - Can now check local version against github release name
 - Added ability to notify
+
+## License
+US/UK english converter is shared under the [MIT license](https://github.com/ThomasLandstra/PyReleaseCheck/blob/main/licence).
