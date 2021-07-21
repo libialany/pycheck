@@ -69,4 +69,4 @@ print(pycheck.getReleaseAge(version, repo))
 - Added ability to notify
 
 ## License
-US/UK english converter is shared under the [MIT license](https://github.com/ThomasLandstra/PyReleaseCheck/blob/main/licence).
+PyReleaseCheck converter is shared under the [MIT license](https://github.com/ThomasLandstra/PyReleaseCheck/blob/main/licence).
