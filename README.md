@@ -19,7 +19,7 @@ Currently this module is not available through pypi so you must clone the repo a
 To use this module we first need to import the module into our python project.
 
 ```py
-import pyceck
+import pycheck
 ```
 
 <br/>
