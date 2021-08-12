@@ -4,7 +4,7 @@
 
 ## Description
 
-This module allows you to check if the most recent release from a github repo is newer than the version localy on the users PC.
+This module allows you to check if the most recent release from a GitHub repo is newer than the version locally on the users PC.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This module allows you to check if the most recent release from a github repo is
 - [Changelog](#changelog)
 
 ## Installation
-Currently this module is not available through pypi so you must clone the repo and drag the Pycheck.py file into your project directory. You will also require the beautifulsoup4 module and the win10toast module.
+Currently, this module is not available through PyPI so you must clone the repo and drag the Pycheck.py file into your project directory. You will also require the beautifulsoup4 module and the win10toast module.
 
 ## Usage
 To use this module we first need to import the module into our python project.
@@ -24,7 +24,7 @@ import pycheck
 
 <br/>
 
-Once we have the module imported we can use the isCurrent function to check if there is a new version of the program available based on the name of the most recent github release. In this example the rep (Example/ExampleRepo) has a new version available.
+Once we have the module imported we can use the isCurrent function to check if there is a new version of the program available based on the name of the most recent GitHub release. In this example, the repo (Example/ExampleRepo) has a new version available.
 
 ```py
 version = "0.1.0" # Current Version of program
@@ -62,10 +62,10 @@ print(pycheck.getReleaseAge(version, repo))
 
 ### V0.2.0
 - Added macOS support for notifications
-- Added new function to get current version
+- Added a new function to get the current version
 
 ### V0.1.0
-- Can now check local version against github release name
+- Can now check the local version against GitHub release name
 - Added ability to notify
 
 ## License
