@@ -49,7 +49,7 @@ We can also get the age of the release. That being the number of new releases si
 ```py
 
 print(pycheck.getReleaseAge(version, repo))
-# Will return 3" as an integer.
+# Will return "3" as an integer.
 ```
 
 ## Changelog
