@@ -19,7 +19,7 @@ Currently, this module is not available through PyPI so you must clone the repo 
 To use this module we first need to import the module into our python project.
 
 ```py
-import pycheck
+import Pycheck
 ```
 
 <br/>
