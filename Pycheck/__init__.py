@@ -1,49 +1,39 @@
+# Imports
 from requests import get
 
 
-def isCurrent(currentVersion: str, repo: str):
-    data = get(
+def is_current(current_version: str, repo: str):
+    version_data = get(
         "https://api.github.com/repos/" + str(repo) + "/releases/latest"
     ).json()  # Get latest version data
 
-    try:  # Is valid repo
-        if data["message"] == "Not Found":  # Invalid
+    if "message" in version_data.keys():
+        if version_data["message"] == "Not Found":  # Invalid Repo or no releases
             raise Exception("Invalid repository")
-    except:
-        return None
-    finally:
-        # Try get latest version
-        latestVersion = data["name"]
-        # Return Data
-        if latestVersion == currentVersion:
-            return True  # Up to date
-        else:
-            return False  # Out of date
+
+    return version_data["name"] == current_version
 
 
-def getCurrentRelease(repo: str):
-    data = get(
+def get_current_release(repo: str):
+    version_data = get(
         "https://api.github.com/repos/" + str(repo) + "/releases/latest"
     ).json()  # Get latest version data
 
-    try:  # Is valid repo
-        if data["message"] == "Not Found":  # Invalid Repo
+    if "message" in version_data.keys():
+        if version_data["message"] == "Not Found":  # Invalid Repo or no releases
             raise Exception("Invalid repository")
-    except:
-        return None
-    finally:
-        return data["name"]
+
+    return version_data["name"]
 
 
-def getReleaseAge(currentVersion: str, repo: str):
-    data = get(
+def get_release_age(currentVersion: str, repo: str):
+    version_list = get(
         "https://api.github.com/repos/" + str(repo) + "/releases"
     ).json()  # Get version list
 
     age = 0
 
-    for x in data:  # Loop through version list
-        if str(x["name"]) == currentVersion:
+    for version in version_list:  # Loop through version list
+        if str(version["name"]) == currentVersion:
             return age
-        else:
-            age += 1
+        age += 1
