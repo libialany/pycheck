@@ -18,42 +18,37 @@ Currently, this module is not available through PyPI so you must clone the repo 
 
 ## Usage
 
-To use this module we first need to import the module into our python project.
-
-```py
+```
+# Imports
 import pycheck
-```
 
-<br/>
+# Variables
+REPO: str = "example/example"
+VERSION: str = "V0.1.0"
 
-Once we have the module imported we can use the isCurrent function to check if there is a new version of the program available based on the name of the most recent GitHub release. In this example, the repo (Example/ExampleRepo) has a new version available.
+# Functions
+is_current: bool = pycheck.is_current(VERSION, REPO)
+age:int = pycheck.get_release_age(VERSION, REPO)
 
-```py
-version = "0.1.0" # Current Version of program
-repo = "Example/ExampleRepo" # The owner of the repo/the name of the repo
+# Functions that return a release object
+release = pycheck.get_current_release(REPO)
+releases_list: list = pycheck.get_releases(REPO) # Returns a list of all releases
 
-print(pycheck.is_current(version, repo))
-# Will return False as a bool
-```
+# The following is a list of variables that
+# can be accessed through the release object
 
-<br/>
+release.info: dict
+release.tag_name: str
+release.name: str
+release.age: int
+release.is_latest: bool
 
-We can also get the name of the latest release.
+releases_list: list(Release) = pycheck.get_releases(REPO) # Returns a list of all releases
 
-```py
-
-print(pycheck.get_currentRelease(repo))
-# Will return "0.2.0" as a string.
-```
-
-<br/>
-
-We can also get the age of the release. That being the number of new releases since the local version was released.
-
-```py
-
-print(pycheck.get_release_age(version, repo))
-# Will return "3" as an integer.
+# Release(repo: str, tag_name: str, info_override: dict = None)
+# Note that info_override allows you to pass the
+# info of a release directly into the object
+release_2 = Release(REPO, VERSION)
 ```
 
 ## Changelog
