@@ -38,15 +38,15 @@ def get_release_age(current_version: str, repo: str) -> int:
 
 
 def get_current_release(repo: str):
-    version_data = get(
+    data = get(
         REPO_PREFIX + str(repo) + "/releases/latest"
     ).json()  # Get latest version data
 
-    if "message" in version_data.keys():
-        if version_data["message"] == "Not Found":  # Invalid Repo or no releases
+    if "message" in data.keys():
+        if data["message"] == "Not Found":  # Invalid Repo or no releases
             raise Invalid_Repo(repo)
 
-    return Release(repo, version_data["tag_name"])
+    return Release(repo, "", data)
 
 
 def get_releases(repo) -> list:
