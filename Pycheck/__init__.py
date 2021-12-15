@@ -58,7 +58,7 @@ def get_releases(repo) -> list:
 
     for version in version_list:
         list_o_versions.append(Release(repo, "", version))
-    
+
     return list_o_versions
 
 
@@ -75,12 +75,12 @@ class Release:
 
             for version in version_list:
                 if version["tag_name"] == tag_name:
-                    self.info = version
+                    self.info: dict = version
 
             self.tag_name: str = tag_name
 
         else:
-            self.info = info_override
+            self.info: dict = info_override
             self.tag_name: str = self.info["tag_name"]
 
         self.name: str = self.info["name"]
