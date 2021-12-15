@@ -4,7 +4,7 @@
 
 ## Description
 
-This module allows you to check if the most recent release from a GitHub repo is newer than the version locally on the users PC.
+This module allows you to get and compare github releases.
 
 ## Table of Contents
 
@@ -58,9 +58,16 @@ print(pycheck.get_release_age(version, repo))
 
 ## Changelog
 
+### V1.0.0
+
+- Added ability to get all info from a release
+- Info can now be accessed from a Class
+- Optimised functions
+- Added better exception handling
+
 ### V0.3.1
 
-- Make module more pythonic
+- Make the module more pythonic
 - Use snake case
 
 ### V0.3.0
