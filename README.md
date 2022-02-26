@@ -4,7 +4,7 @@
 
 ## Description
 
-This module allows you to get and compare github releases.
+This module allows you to track, compare and view data about the releases from a GitHub Repository.
 
 ## Table of Contents
 
