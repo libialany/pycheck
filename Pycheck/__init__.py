@@ -1,5 +1,4 @@
 # Imports
-from distutils.log import info
 from requests import get
 
 # Variables

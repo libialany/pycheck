@@ -14,7 +14,7 @@ This module allows you to get and compare github releases.
 
 ## Installation
 
-Currently, this module is not available through PyPI so you must clone the repo and drag the pycheck folder into your project directory. You will also require the beautifulsoup4 module and the win10toast module.
+Currently, this module is not available through PyPI so you must clone the repo and drag the pycheck folder into your project directory.
 
 ## Usage
 
@@ -43,7 +43,7 @@ release.name: str
 release.age: int
 release.is_latest: bool
 
-releases_list: list(Release) = pycheck.get_releases(REPO) # Returns a list of all releases
+releases_list: list = pycheck.get_releases(REPO) # Returns a list of all releases
 
 # Release(repo: str, tag_name: str, info_override: dict = None)
 # Note that info_override allows you to pass the
@@ -84,4 +84,4 @@ release_2 = Release(REPO, VERSION)
 
 ## License
 
-PyReleaseCheck is shared under the [MIT license](https://github.com/ThomasLandstra/PyReleaseCheck/blob/main/licence).
+pycheck is shared under the [MIT license](https://github.com/ThomasLandstra/PyReleaseCheck/blob/main/licence).
