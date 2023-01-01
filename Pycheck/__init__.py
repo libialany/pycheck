@@ -27,9 +27,12 @@ SOFTWARE.
 
 # Imports
 from requests import get
+import os
 
 # Variables
 REPO_PREFIX = "https://api.github.com/repos/"
+TOKEN = os.environ.get("git_key")
+
 
 # Exceptions
 class Invalid_Repo(Exception):
@@ -42,9 +45,7 @@ class Invalid_Repo(Exception):
     def __init__(self, repo: str):
         self.repo = repo
         super().__init__(
-            "GitHub api could not find your repo or couldn't find any releases (repo: "
-            + repo
-            + ")"
+            f"GitHub api could not find your repo or couldn't find any releases (repo: {repo} )"
         )
 
 
@@ -63,7 +64,9 @@ def is_current(current_version: str, repo: str) -> bool:
         bool: True if current version is up to date.
     """
 
-    version_data = get(REPO_PREFIX + str(repo) + "/releases/latest").json()
+    version_data = get(
+        f"{REPO_PREFIX}{repo}/releases/latest", headers={"Authorization": TOKEN}
+    ).json()
 
     if "message" in version_data.keys():
         # Is repo valid/does it contain releases
@@ -83,7 +86,9 @@ def get_release_age(current_version: str, repo: str) -> int:
     Returns:
         int: How many versions have been released since the reported version.
     """
-    version_list = get(REPO_PREFIX + str(repo) + "/releases").json()  # Get version list
+    version_list = get(
+        f"{REPO_PREFIX}{repo}/releases", headers={"Authorization": TOKEN}
+    ).json()  # Get version list
 
     age = 0
 
@@ -106,7 +111,7 @@ def get_current_release(repo: str):
         Release: An object used to interact with data about the GitHub release.
     """
     data = get(
-        REPO_PREFIX + str(repo) + "/releases/latest"
+        f"{REPO_PREFIX}{repo}/releases/latest", headers={"Authorization": TOKEN}
     ).json()  # Get latest version data
 
     if "message" in data.keys():
@@ -129,7 +134,9 @@ def get_releases(repo) -> list:
         list: A list of Release objects used to interact with data about the GitHub releases.
     """
     list_o_versions = []
-    version_list = get(REPO_PREFIX + str(repo) + "/releases/").json()
+    version_list = get(
+        f"{REPO_PREFIX}{repo}/releases", headers={"Authorization": TOKEN}
+    ).json()
 
     if isinstance(version_list, dict):
         raise Invalid_Repo(repo)
@@ -157,7 +164,9 @@ class Release:
         self.repo: str = repo
 
         if info_override is None:
-            version_list = get(REPO_PREFIX + str(self.repo) + "/releases/").json()
+            version_list = get(
+                f"{REPO_PREFIX}{repo}/releases", headers={"Authorization": TOKEN}
+            ).json()
 
             if isinstance(version_list, dict):
                 raise Invalid_Repo(repo)
@@ -175,3 +184,6 @@ class Release:
         self.name: str = self.info["name"]
         self.age: int = get_release_age(self.info["tag_name"], self.repo)
         self.is_latest: bool = not bool(self.age)
+
+    def __str__(self):
+        return f"Release name is {self.name} and age sinde the latest version is {self.age} and tag_name is {self.tag_name}"
